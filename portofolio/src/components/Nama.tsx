@@ -33,16 +33,46 @@ const Nama = () => {
             zIndex={1}
         >
             <Box textAlign="center">
-                <Text fontSize="sm" color={currentStyle.accent} mb={2}>
-                    Available for projects
-                </Text>
+                <Flex 
+                    display="inline-flex"
+                    alignItems="center"
+                    bg="rgba(0, 0, 0, 0.2)"
+                    px={3}
+                    py={1}
+                    borderRadius="full"
+                    mb={2}
+                >
+                    <Box
+                        w={2}
+                        h={2}
+                        borderRadius="full"
+                        bg="#22c55e"
+                        mr={2}
+                    />
+                    <Text 
+                        fontSize="sm" 
+                        color="rgba(255, 255, 255, 0.9)"
+                        fontWeight="medium"
+                    >
+                        Available for projects
+                    </Text>
+                </Flex>
                 <Text fontSize="4xl" fontWeight="bold">
                     Hi, I'm Hariz.
                 </Text>
                 <Text fontSize="2xl" fontWeight="medium" mt={2} mb={6}>
                     A software engineer.
                 </Text>
-                <Box fontSize="lg" maxW="500px" mx="auto" mb={8}>
+                <Box 
+                    fontSize="lg" 
+                    maxW="500px" 
+                    mx="auto" 
+                    mb={8}
+                    height="80px"  // Fixed height to prevent layout shifts
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                >
                     <TypeAnimation
                         sequence={[
                             "Mainly working in the JavaScript ecosystem, I'm a dedicated problem-solver who thrives on learning and building.",
@@ -55,10 +85,25 @@ const Nama = () => {
                         wrapper="span"
                         speed={50}
                         repeat={Infinity}
-                        style={{ display: 'inline-block' }}
+                        style={{ 
+                            display: 'inline-block',
+                            minHeight: '60px',  // Minimum height for the text
+                            textAlign: 'center'
+                        }}
                     />
                 </Box>
-                <Flex justify="center" gap={4} mb={4}>
+                <Flex 
+                    justify="center" 
+                    gap={6} 
+                    mb={6}
+                    bg="rgba(255, 255, 255, 0.05)"
+                    backdropFilter="blur(10px)"
+                    borderRadius="xl"
+                    p={4}
+                    maxW="fit-content"
+                    mx="auto"
+                    border="1px solid rgba(255, 255, 255, 0.1)"
+                >
                     <IconButton
                         aria-label="GitHub"
                         variant="ghost"
@@ -66,11 +111,16 @@ const Nama = () => {
                         href="https://github.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        colorScheme="whiteAlpha"
                         color={currentStyle.text}
-                        _hover={{ color: currentStyle.accent }}
+                        _hover={{ 
+                            color: currentStyle.accent,
+                            transform: 'translateY(-2px)',
+                            bg: 'rgba(255, 255, 255, 0.1)'
+                        }}
+                        transition="all 0.3s ease"
+                        size="lg"
                     >
-                        <FaGithub size={20} />
+                        <FaGithub size={24} />
                     </IconButton>
                     <IconButton
                         aria-label="LinkedIn"
@@ -79,22 +129,32 @@ const Nama = () => {
                         href="https://linkedin.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        colorScheme="whiteAlpha"
                         color={currentStyle.text}
-                        _hover={{ color: currentStyle.accent }}
+                        _hover={{ 
+                            color: currentStyle.accent,
+                            transform: 'translateY(-2px)',
+                            bg: 'rgba(255, 255, 255, 0.1)'
+                        }}
+                        transition="all 0.3s ease"
+                        size="lg"
                     >
-                        <FaLinkedin size={20} />
+                        <FaLinkedin size={24} />
                     </IconButton>
                     <IconButton
                         aria-label="Portfolio"
                         variant="ghost"
                         as="a"
                         href="#portfolio"
-                        colorScheme="whiteAlpha"
                         color={currentStyle.text}
-                        _hover={{ color: currentStyle.accent }}
+                        _hover={{ 
+                            color: currentStyle.accent,
+                            transform: 'translateY(-2px)',
+                            bg: 'rgba(255, 255, 255, 0.1)'
+                        }}
+                        transition="all 0.3s ease"
+                        size="lg"
                     >
-                        <FaBook size={20} />
+                        <FaBook size={24} />
                     </IconButton>
                     <IconButton
                         aria-label="Email"
@@ -103,11 +163,16 @@ const Nama = () => {
                         href="mailto:someone@example.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        colorScheme="whiteAlpha"
                         color={currentStyle.text}
-                        _hover={{ color: currentStyle.accent }}
+                        _hover={{ 
+                            color: currentStyle.accent,
+                            transform: 'translateY(-2px)',
+                            bg: 'rgba(255, 255, 255, 0.1)'
+                        }}
+                        transition="all 0.3s ease"
+                        size="lg"
                     >
-                        <FaEnvelope size={20} />
+                        <FaEnvelope size={24} />
                     </IconButton>
                 </Flex>
                 <Button
