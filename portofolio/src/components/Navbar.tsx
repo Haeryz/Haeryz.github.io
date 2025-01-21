@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <Container
-            mb={20}
+            mb={2}
             display={'flex'}
             justifyContent={'space-between'}
             alignItems={'center'}
