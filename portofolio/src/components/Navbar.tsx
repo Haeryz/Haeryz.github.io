@@ -1,14 +1,12 @@
-import { Box, Container, Heading, IconButton, Image } from '@chakra-ui/react';
+import { Box, Container, Heading, IconButton } from '@chakra-ui/react';
 import React from 'react';
-import logo from '../assets/kevinRushLogo.png';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaGithub, FaXTwitter } from 'react-icons/fa6';
-import { Button } from './ui/button';
-import { useColorMode } from './ui/color-mode';
-import { LuMoon, LuSun } from 'react-icons/lu';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
-    const { toggleColorMode, colorMode } = useColorMode()
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <Container
             mb={20}
@@ -27,8 +25,8 @@ const Navbar = () => {
                 </Heading>
             </Box>
             <Box display={'flex'} alignItems={'center'} justifyItems={'center'} mr={4} gapX={4} fontSize={'2xl'}>
-                <IconButton onClick={toggleColorMode} variant={'outline'} size={'sm'}>
-                    {colorMode === "light" ? <LuSun /> : <LuMoon />}
+                <IconButton onClick={toggleTheme} variant={'outline'} size={'sm'}>
+                    {theme === "galaxy" ? "🌌" : "🍭"}
                 </IconButton>
                 <FaLinkedin />
                 <FaGithub />

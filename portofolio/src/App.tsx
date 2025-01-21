@@ -1,14 +1,14 @@
-import { Box, HStack } from "@chakra-ui/react"
-import { Button } from "./components/ui/button"
-import Navbar from "./components/Navbar"
+import { Box } from "@chakra-ui/react"
+import { StarryBackground } from "./components/StarryBackground"
+import { ThemeProvider } from "./contexts/ThemeContext"
 
 function App() {
-
-
   return (
-    <Box>
-      <Navbar />
-    </Box>
+    <ThemeProvider>
+      <Box>
+        <StarryBackground />
+      </Box>
+    </ThemeProvider>
   )
 }
 
