@@ -170,7 +170,7 @@ const Nama = () => {
                     mx="auto"
                     border="1px solid rgba(255, 255, 255, 0.1)"
                 >
-                    <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://github.com/Haeryz" target="_blank" rel="noopener noreferrer">
                         <IconButton
                             aria-label="GitHub"
                             variant="ghost"

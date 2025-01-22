@@ -3,6 +3,7 @@ import { StarryBackground } from "./components/StarryBackground"
 import { ThemeProvider } from "./contexts/ThemeContext"
 import Nama from "./components/Nama"
 import Navbar from "./components/Navbar"
+import BottomNav from "./components/BottomNav"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <StarryBackground />
         <Navbar />
         <Nama />
+        <BottomNav />
       </Box>
     </ThemeProvider>
   )
