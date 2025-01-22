@@ -1,8 +1,75 @@
 import { Box, Flex, IconButton, Text, Link } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
 import { FaBook, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { Button } from './ui/button'
 import { TypeAnimation } from 'react-type-animation';
+
+const AnimatedLetter = ({ letter, accentColor }: { letter: string; accentColor: string }) => {
+    return (
+        <motion.span
+            style={{ 
+                display: 'inline-block', 
+                whiteSpace: 'pre',
+                position: 'relative'
+            }}
+            whileHover={{ 
+                scale: 1.3,
+                color: accentColor,
+                y: -2,
+                rotate: [-2, 0, 2],
+                transition: {
+                    scale: {
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 10
+                    },
+                    rotate: {
+                        duration: 0.2,
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                    }
+                }
+            }}
+            initial={{ y: 0, rotate: 0 }}
+            whileTap={{ scale: 0.8 }}
+        >
+            {letter}
+            <motion.span
+                style={{
+                    position: 'absolute',
+                    bottom: -2,
+                    left: 0,
+                    right: 0,
+                    height: 2,
+                    background: 'currentColor',
+                    opacity: 0
+                }}
+                initial={{ width: '0%', left: '50%' }}
+                whileHover={{
+                    opacity: 1,
+                    width: '100%',
+                    left: '0%',
+                    transition: { duration: 0.2 }
+                }}
+            />
+        </motion.span>
+    )
+}
+
+const AnimatedText = ({ text, accentColor }: { text: string; accentColor: string }) => {
+    return (
+        <span style={{ display: 'inline-block' }}>
+            {text.split('').map((letter, index) => (
+                <AnimatedLetter 
+                    key={index} 
+                    letter={letter === ' ' ? '\u00A0' : letter}
+                    accentColor={accentColor}
+                />
+            ))}
+        </span>
+    )
+}
 
 const Nama = () => {
     const { theme } = useTheme();
@@ -57,10 +124,10 @@ const Nama = () => {
                     </Text>
                 </Flex>
                 <Text fontSize="4xl" fontWeight="bold">
-                    Hi, I'm Hariz.
+                    <AnimatedText text="Hi, I'm Hariz." accentColor={currentStyle.accent} />
                 </Text>
                 <Text fontSize="2xl" fontWeight="medium" mt={2} mb={6}>
-                    A software engineer.
+                    <AnimatedText text="A software engineer." accentColor={currentStyle.accent} />
                 </Text>
                 <Box 
                     fontSize="lg" 
@@ -177,6 +244,8 @@ const Nama = () => {
                         _hover={{
                             filter: 'brightness(1.2)'
                         }}
+                        w={40}
+                        borderRadius={'lg'}
                     >
                         Explore More
                     </Button>
