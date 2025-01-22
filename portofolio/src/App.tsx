@@ -11,7 +11,7 @@ function App() {
     <ThemeProvider>
       <Box position="relative">
         <StarryBackground />
-        <Navbar />
+        {/* <Navbar /> */}
         <Nama />
         <ProfileWidget />
         <BottomNav />

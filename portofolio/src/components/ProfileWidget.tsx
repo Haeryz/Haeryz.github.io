@@ -3,15 +3,25 @@ import {
     Box,
     HStack,
     Text,
-    IconButton,
     SimpleGrid,
-    Flex,
 } from "@chakra-ui/react";
 import { FaSpotify } from "react-icons/fa";
-import { FiMapPin } from "react-icons/fi";
 import { BiGitBranch } from "react-icons/bi";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix for default marker icons in react-leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconUrl: '/markers/marker-icon.png',
+    iconRetinaUrl: '/markers/marker-icon-2x.png',
+    shadowUrl: '/markers/marker-shadow.png'
+});
 
 const ProfileWidget = () => {
+    const position = [-7.965811, 112.634270]; // Malang City coordinates
+
     return (
         <Box bg="gray.900" color="white" p={6} rounded="lg" maxW="1200px" mx="auto">
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
@@ -20,20 +30,28 @@ const ProfileWidget = () => {
                     bg="gray.800"
                     p={4}
                     rounded="md"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
                 >
-                    <Flex direction="column" align="center">
-                        <IconButton
-                            aria-label="Location"
-                            bg="gray.700"
-                            mb={2}
+                    <Text mb={2} fontWeight="bold">Location</Text>
+                    <Box h="200px" position="relative" overflow="hidden">
+                        <MapContainer 
+                            center={position} 
+                            zoom={12}
+                            zoomControl={true}
+                            scrollWheelZoom={false}
+                            style={{ height: '100%', width: '100%', borderRadius: '0.375rem' }}
                         >
-                            <FiMapPin />
-                        </IconButton>
-                        <Text>Location</Text>
-                    </Flex>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                className="map-tiles"
+                            />
+                            <Marker position={position}>
+                                <Popup>
+                                    Malang, East Java, Indonesia
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+                    </Box>
                 </Box>
 
                 {/* Featured Work */}
