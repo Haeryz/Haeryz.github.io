@@ -1,5 +1,4 @@
-import { Box, Flex, IconButton, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Flex, IconButton, Text, Link } from '@chakra-ui/react'
 import { useTheme } from '../contexts/ThemeContext'
 import { FaBook, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { Button } from './ui/button'
@@ -104,90 +103,84 @@ const Nama = () => {
                     mx="auto"
                     border="1px solid rgba(255, 255, 255, 0.1)"
                 >
-                    <IconButton
-                        aria-label="GitHub"
-                        variant="ghost"
-                        as="a"
-                        href="https://github.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color={currentStyle.text}
-                        _hover={{ 
-                            color: currentStyle.accent,
-                            transform: 'translateY(-2px)',
-                            bg: 'rgba(255, 255, 255, 0.1)'
-                        }}
-                        transition="all 0.3s ease"
-                        size="lg"
-                    >
-                        <FaGithub size={24} />
-                    </IconButton>
-                    <IconButton
-                        aria-label="LinkedIn"
-                        variant="ghost"
-                        as="a"
-                        href="https://linkedin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color={currentStyle.text}
-                        _hover={{ 
-                            color: currentStyle.accent,
-                            transform: 'translateY(-2px)',
-                            bg: 'rgba(255, 255, 255, 0.1)'
-                        }}
-                        transition="all 0.3s ease"
-                        size="lg"
-                    >
-                        <FaLinkedin size={24} />
-                    </IconButton>
-                    <IconButton
-                        aria-label="Portfolio"
-                        variant="ghost"
-                        as="a"
-                        href="#portfolio"
-                        color={currentStyle.text}
-                        _hover={{ 
-                            color: currentStyle.accent,
-                            transform: 'translateY(-2px)',
-                            bg: 'rgba(255, 255, 255, 0.1)'
-                        }}
-                        transition="all 0.3s ease"
-                        size="lg"
-                    >
-                        <FaBook size={24} />
-                    </IconButton>
-                    <IconButton
-                        aria-label="Email"
-                        variant="ghost"
-                        as="a"
-                        href="mailto:someone@example.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color={currentStyle.text}
-                        _hover={{ 
-                            color: currentStyle.accent,
-                            transform: 'translateY(-2px)',
-                            bg: 'rgba(255, 255, 255, 0.1)'
-                        }}
-                        transition="all 0.3s ease"
-                        size="lg"
-                    >
-                        <FaEnvelope size={24} />
-                    </IconButton>
+                    <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                        <IconButton
+                            aria-label="GitHub"
+                            variant="ghost"
+                            color={currentStyle.text}
+                            _hover={{ 
+                                color: currentStyle.accent,
+                                transform: 'translateY(-2px)',
+                                bg: 'rgba(255, 255, 255, 0.1)'
+                            }}
+                            transition="all 0.3s ease"
+                            size="lg"
+                        >
+                            <FaGithub size={24} />
+                        </IconButton>
+                    </Link>
+                    <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <IconButton
+                            aria-label="LinkedIn"
+                            variant="ghost"
+                            color={currentStyle.text}
+                            _hover={{ 
+                                color: currentStyle.accent,
+                                transform: 'translateY(-2px)',
+                                bg: 'rgba(255, 255, 255, 0.1)'
+                            }}
+                            transition="all 0.3s ease"
+                            size="lg"
+                        >
+                            <FaLinkedin size={24} />
+                        </IconButton>
+                    </Link>
+                    <Link href="#portfolio">
+                        <IconButton
+                            aria-label="Portfolio"
+                            variant="ghost"
+                            color={currentStyle.text}
+                            _hover={{ 
+                                color: currentStyle.accent,
+                                transform: 'translateY(-2px)',
+                                bg: 'rgba(255, 255, 255, 0.1)'
+                            }}
+                            transition="all 0.3s ease"
+                            size="lg"
+                        >
+                            <FaBook size={24} />
+                        </IconButton>
+                    </Link>
+                    <Link href="mailto:haeriz42069@gmail.com" target="_blank" rel="noopener noreferrer">
+                        <IconButton
+                            aria-label="Email"
+                            variant="ghost"
+                            color={currentStyle.text}
+                            _hover={{ 
+                                color: currentStyle.accent,
+                                transform: 'translateY(-2px)',
+                                bg: 'rgba(255, 255, 255, 0.1)'
+                            }}
+                            transition="all 0.3s ease"
+                            size="lg"
+                        >
+                            <FaEnvelope size={24} />
+                        </IconButton>
+                    </Link>
                 </Flex>
-                <Button
-                    as="a"
-                    href="#explore-more"
-                    style={{
-                        background: currentStyle.accent,
-                        color: currentStyle.text
-                    }}
-                    _hover={{
-                        filter: 'brightness(1.2)'
-                    }}
-                >
-                    Explore More
-                </Button>
+                <Link href="#explore-more" style={{ textDecoration: 'none' }}>
+                    <Button
+                        style={{
+                            background: currentStyle.accent,
+                            color: currentStyle.text
+                        }}
+                        _hover={{
+                            filter: 'brightness(1.2)'
+                        }}
+                    >
+                        Explore More
+                    </Button>
+                </Link>
             </Box>
         </Box>
     )

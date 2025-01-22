@@ -1,5 +1,5 @@
 import { Box, Container, Heading, IconButton } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaGithub, FaXTwitter } from 'react-icons/fa6';
 import { useTheme } from '../contexts/ThemeContext';
@@ -81,22 +81,18 @@ const Navbar = () => {
                     fontSize={'xl'}
                     alignItems="center"
                 >
-                    <FaLinkedin 
-                        cursor="pointer" 
-                        _hover={{ color: currentStyle.accent }} 
-                    />
-                    <FaGithub 
-                        cursor="pointer" 
-                        _hover={{ color: currentStyle.accent }} 
-                    />
-                    <FaInstagram 
-                        cursor="pointer" 
-                        _hover={{ color: currentStyle.accent }} 
-                    />
-                    <FaXTwitter 
-                        cursor="pointer" 
-                        _hover={{ color: currentStyle.accent }} 
-                    />
+                    <Box as="span" cursor="pointer" _hover={{ color: currentStyle.accent }}>
+                        <FaLinkedin />
+                    </Box>
+                    <Box as="span" cursor="pointer" _hover={{ color: currentStyle.accent }}>
+                        <FaGithub />
+                    </Box>
+                    <Box as="span" cursor="pointer" _hover={{ color: currentStyle.accent }}>
+                        <FaInstagram />
+                    </Box>
+                    <Box as="span" cursor="pointer" _hover={{ color: currentStyle.accent }}>
+                        <FaXTwitter />
+                    </Box>
                 </Box>
             </Box>
         </Container>
