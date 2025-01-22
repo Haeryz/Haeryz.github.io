@@ -12,7 +12,10 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // Fix for default marker icons in react-leaflet
-delete L.Icon.Default.prototype._getIconUrl;
+interface DefaultIconPrototype extends L.Icon.Default {
+    _getIconUrl?: string;
+}
+delete (L.Icon.Default.prototype as DefaultIconPrototype)._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconUrl: '/markers/marker-icon.png',
     iconRetinaUrl: '/markers/marker-icon-2x.png',
@@ -20,7 +23,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const ProfileWidget = () => {
-    const position = [-7.965811, 112.634270]; // Malang City coordinates
+    const position: [number, number] = [-7.965811, 112.634270]; // Malang City coordinates
 
     return (
         <Box bg="gray.900" color="white" p={6} rounded="lg" maxW="1200px" mx="auto">
