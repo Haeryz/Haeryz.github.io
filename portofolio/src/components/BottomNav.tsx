@@ -44,12 +44,19 @@ const BottomNav = () => {
     ];
 
     return (
-        <Flex justify="center" position="fixed" bottom={4} left={0} right={0} zIndex={10}>
+        <Flex 
+            justify="center" 
+            position="fixed" 
+            bottom={4} 
+            left={0} 
+            right={0} 
+            zIndex={999}  // Increased z-index
+        >
             <HStack 
                 gapX={4} 
                 justify="center"
-                bg="rgba(0, 0, 0, 0.2)"
-                backdropFilter="blur(10px)"
+                bg="rgba(0, 0, 0, 0.4)"  // Increased background opacity
+                backdropFilter="blur(12px)"  // Increased blur effect
                 px={4}
                 py={2}
                 borderRadius="full"

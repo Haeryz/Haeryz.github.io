@@ -3,14 +3,13 @@ import { StarryBackground } from "./components/StarryBackground"
 import { ThemeProvider } from "./contexts/ThemeContext"
 import Nama from "./components/Nama"
 import BottomNav from "./components/BottomNav"
-import ProfileWidget from "./components/ProfileWidget"
+import { ProfileWidget } from "./components/ProfileWidget"
 
 function App() {
   return (
     <ThemeProvider>
-      <Box position="relative">
+      <Box position="relative" pb={20}>
         <StarryBackground />
-        {/* <Navbar /> */}
         <Nama />
         <ProfileWidget />
         <BottomNav />
