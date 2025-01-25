@@ -7,8 +7,9 @@ import {
 } from "@chakra-ui/react";
 import { FaSpotify } from "react-icons/fa";
 import { BiGitBranch } from "react-icons/bi";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import L from 'leaflet';
 
 // Fix for default marker icons in react-leaflet
@@ -39,20 +40,17 @@ const ProfileWidget = () => {
                         <MapContainer 
                             center={position} 
                             zoom={12}
-                            zoomControl={true}
-                            scrollWheelZoom={false}
+                            zoomControl={false}
+                            dragging={false}
+                            doubleClickZoom={false}
                             style={{ height: '100%', width: '100%', borderRadius: '0.375rem' }}
                         >
                             <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>'
+                                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
                                 className="map-tiles"
                             />
-                            <Marker position={position}>
-                                <Popup>
-                                    Malang, East Java, Indonesia
-                                </Popup>
-                            </Marker>
+                            <div className="location-dot" />
                         </MapContainer>
                     </Box>
                 </Box>
