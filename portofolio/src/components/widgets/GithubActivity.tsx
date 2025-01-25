@@ -52,7 +52,7 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
             transition="all 0.3s ease"
             _hover={{ bg: style.hoverBg }}
             color={style.text}
-            gridColumn={{ base: "1", lg: "1 / span 2" }}  // Make it span 2 columns on large screens
+            gridColumn={{ base: "1", lg: "1 / span 2" }}  // Make it span 2 columns on large 
         >
             <HStack align="center" mb={2}>
                 <BiGitBranch size="20px" color={style.accent} />
