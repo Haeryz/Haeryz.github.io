@@ -6,7 +6,7 @@
   "homepage": "https://haeryz.github.io",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && GENERATE_SOURCEMAP=false react-scripts build && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
