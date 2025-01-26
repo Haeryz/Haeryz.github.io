@@ -101,6 +101,48 @@ const TechStack = ({ style }: TechStackProps) => {
                         </InfiniteLogoSlider.Slide>
                     ))}
                 </InfiniteLogoSlider>
+                <Box mt={10}>
+                <InfiniteLogoSlider
+                    width="80px"
+                    duration={30}  // Faster duration for second slider
+                    pauseOnHover={true}
+                    blurBorders={false}
+                    toRight={true}
+                >
+                    {techStacks.map((tech, index) => (
+                        <InfiniteLogoSlider.Slide key={index}>
+                            <Box 
+                                display="flex" 
+                                flexDirection="column" 
+                                alignItems="center"
+                                transition="all 0.3s ease"
+                                p={2}
+                                rounded="md"
+                                _hover={{
+                                    bg: style.hoverBg,
+                                    transform: 'translateY(-2px)'
+                                }}
+                            >
+                                <tech.icon 
+                                    size={24} 
+                                    color={tech.color}
+                                    style={{
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                />
+                                <Text 
+                                    fontSize="sm" 
+                                    color={style.textSecondary}
+                                    mt={1}
+                                    fontWeight="medium"
+                                >
+                                    {tech.name}
+                                </Text>
+                            </Box>
+                        </InfiniteLogoSlider.Slide>
+                    ))}
+                </InfiniteLogoSlider>
+                </Box>
             </Box>
         </Box>
     );

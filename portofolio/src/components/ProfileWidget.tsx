@@ -1,7 +1,8 @@
 import {
     Box,
     Text,
-    SimpleGrid,
+    Grid,
+    GridItem,
 } from "@chakra-ui/react";
 import { useTheme } from "../contexts/ThemeContext";
 import LocationWidget from "./widgets/LocationWidget";
@@ -45,21 +46,20 @@ export const ProfileWidget = () => {
     const currentStyle = glassStyle[theme];
 
     return (
-        <SimpleGrid 
-            columns={{ base: 1, md: 2, lg: 4 }}  // Changed to 4 columns
-            gap={6}
+        <Grid 
+            templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }}
+            gap={4}
             maxW="1200px" 
             mx="auto"
-            p={6}
+            p={4}
             color={currentStyle.text}
         >
-            {/* Location - 2 columns */}
-            <Box gridColumn={{ base: "1", lg: "1 / span 2" }}>
+            {/* Row 1 */}
+            <GridItem colSpan={{ base: 1, lg: 2 }}>
                 <LocationWidget style={currentStyle} />
-            </Box>
-            
-            {/* Featured Work - 2 columns */}
-            <Box gridColumn={{ base: "1", lg: "3 / span 2" }}>
+            </GridItem>
+
+            <GridItem colSpan={{ base: 1, lg: 2 }}>
                 <Box 
                     bg={currentStyle.childBg}
                     backdropFilter="blur(10px)"
@@ -68,9 +68,10 @@ export const ProfileWidget = () => {
                     border={currentStyle.border}
                     transition="all 0.3s ease"
                     _hover={{ bg: currentStyle.hoverBg }}
-                    color={currentStyle.text}
+                    height="100%"
+                    minH="200px"
                 >
-                    <Text fontWeight="bold" mb={2} color={currentStyle.text}>Featured work</Text>
+                    <Text fontWeight="bold" mb={3} color={currentStyle.text}>Featured work</Text>
                     <Box
                         bg={currentStyle.childBg}
                         p={4}
@@ -79,18 +80,23 @@ export const ProfileWidget = () => {
                         transition="all 0.3s ease"
                         _hover={{ bg: currentStyle.hoverBg }}
                         border={currentStyle.border}
-                        color={currentStyle.text}
+                        height="calc(100% - 40px)"
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="center"
                     >
-                        <Text fontWeight="semibold" color={currentStyle.text}>Bookmarked</Text>
+                        <Text fontWeight="semibold" color={currentStyle.text} mb={2}>
+                            Bookmarked
+                        </Text>
                         <Text fontSize="sm" color={currentStyle.textSecondary}>
                             Effortlessly save and organize content
                         </Text>
                     </Box>
                 </Box>
-            </Box>
+            </GridItem>
 
-            {/* Typing Speed - 1 column */}
-            <Box>
+            {/* Row 2 */}
+            <GridItem colSpan={{ base: 1, md: 2, lg: 1 }}>
                 <Box
                     bg={currentStyle.childBg}
                     backdropFilter="blur(10px)"
@@ -99,29 +105,30 @@ export const ProfileWidget = () => {
                     border={currentStyle.border}
                     transition="all 0.3s ease"
                     _hover={{ bg: currentStyle.hoverBg }}
+                    height="100%"
+                    minH="200px"
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
-                    color={currentStyle.text}
+                    justifyContent="center"
                 >
-                    <Text color={currentStyle.textSecondary}>Typing speed</Text>
-                    <TypingSpeed />
+                    <Text color={currentStyle.textSecondary} mb={3}>Typing speed</Text>
+                    <TypingSpeed style={currentStyle} />
                 </Box>
-            </Box>
+            </GridItem>
 
-            {/* GitHub Activity - 2 columns */}
-            <GithubActivity style={currentStyle} />
+            <GridItem colSpan={{ base: 1, md: 2, lg: 3 }}>
+                <GithubActivity style={currentStyle} />
+            </GridItem>
 
-            {/* Tech Stack - 2 columns */}
-            <Box gridColumn={{ base: "1", lg: "3 / span 2" }}>
-                <TechStack style={currentStyle} />
-            </Box>
-
-            {/* Current Focus - 2 columns */}
-            <Box gridColumn={{ base: "1", lg: "1 / span 2" }}>
+            {/* Row 3 */}
+            <GridItem colSpan={{ base: 1, lg: 2 }}>
                 <CurrentFocus style={currentStyle} />
-            </Box>
+            </GridItem>
 
-        </SimpleGrid>
+            <GridItem colSpan={{ base: 1, lg: 2 }}>
+                <TechStack style={currentStyle} />
+            </GridItem>
+        </Grid>
     );
 };
