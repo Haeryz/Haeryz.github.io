@@ -6,8 +6,4 @@ import tsconfigPaths from "vite-tsconfig-paths"
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   base: "/Haeryz.github.io/",
-  build: {
-    sourcemap: false,
-    minify: 'esbuild'  // Change from 'terser' to 'esbuild'
-  }
 })
