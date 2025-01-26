@@ -1,5 +1,4 @@
 import { Flex, HStack, IconButton } from '@chakra-ui/react'
-import React from 'react'
 import { MdOutlineWavingHand } from 'react-icons/md'
 import { useTheme } from '../contexts/ThemeContext'
 import { Tooltip } from './ui/tooltip'
