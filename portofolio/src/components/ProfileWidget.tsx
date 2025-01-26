@@ -9,6 +9,7 @@ import { BsLightbulb } from 'react-icons/bs';
 import LocationWidget from "./widgets/LocationWidget";
 import GithubActivity from "./widgets/GithubActivity";
 import TechStack from "./widgets/TechStack";
+import TypingSpeed from "./widgets/TypingSpeed";
 
 export const ProfileWidget = () => {
     const { theme } = useTheme();
@@ -105,12 +106,7 @@ export const ProfileWidget = () => {
                     color={currentStyle.text}
                 >
                     <Text color={currentStyle.textSecondary}>Typing speed</Text>
-                    <Text fontSize="4xl" fontWeight="bold" color={currentStyle.text}>
-                        140 wpm
-                    </Text>
-                    <Text fontSize="sm" color={currentStyle.textSecondary}>
-                        15s | 100% accuracy
-                    </Text>
+                    <TypingSpeed />
                 </Box>
             </Box>
 
