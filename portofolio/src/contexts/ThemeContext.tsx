@@ -15,14 +15,20 @@ const themes = {
     star: '#FFFFFF',
     starGlow: '#FFFFFF',
     shootingStar: '#FFFFFF',
-    shootingStarGlow: '#FFFFFF'
+    shootingStarGlow: '#FFFFFF',
+    iconPrimary: '#8A2BE2',    // Purple for galaxy theme
+    iconSecondary: '#6B24B2',  // Darker purple for hover
+    sliderBg: 'rgba(138, 43, 226, 0.1)'
   },
   'cotton-candy': {
     background: 'linear-gradient(to bottom, #ff71b2, #509be1)',
     star: '#FFFFFF',
     starGlow: '#FFFFFF',
     shootingStar: '#FFFFFF',
-    shootingStarGlow: '#FFFFFF'
+    shootingStarGlow: '#FFFFFF',
+    iconPrimary: '#509be1',    // Blue for cotton-candy theme
+    iconSecondary: '#3d7ab0',  // Darker blue for hover
+    sliderBg: 'rgba(80, 155, 225, 0.1)'
   }
 };
 

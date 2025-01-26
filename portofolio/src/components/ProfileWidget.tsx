@@ -22,7 +22,10 @@ export const ProfileWidget = () => {
             hoverBg: 'rgba(138, 43, 226, 0.15)',
             text: '#FFFFFF',
             textSecondary: 'rgba(255, 255, 255, 0.8)',
-            accent: '#8A2BE2'
+            accent: '#8A2BE2',
+            iconPrimary: '#8A2BE2',
+            iconSecondary: '#6B24B2',
+            sliderBg: 'rgba(138, 43, 226, 0.1)'
         },
         'cotton-candy': {
             bg: 'rgba(80, 155, 225, 0.05)',
@@ -32,7 +35,10 @@ export const ProfileWidget = () => {
             hoverBg: 'rgba(80, 155, 225, 0.15)',
             text: '#FFFFFF',
             textSecondary: 'rgba(255, 255, 255, 0.8)',
-            accent: '#509be1'
+            accent: '#509be1',
+            iconPrimary: '#509be1',
+            iconSecondary: '#3d7ab0',
+            sliderBg: 'rgba(80, 155, 225, 0.1)'
         }
     };
 
