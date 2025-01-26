@@ -8,6 +8,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { BsLightbulb } from 'react-icons/bs';
 import LocationWidget from "./widgets/LocationWidget";
 import GithubActivity from "./widgets/GithubActivity";
+import TechStack from "./widgets/TechStack";
 
 export const ProfileWidget = () => {
     const { theme } = useTheme();
@@ -112,36 +113,7 @@ export const ProfileWidget = () => {
 
             {/* Tech Stack - 2 columns */}
             <Box gridColumn={{ base: "1", lg: "3 / span 2" }}>
-                <Box 
-                    bg={currentStyle.childBg}
-                    backdropFilter="blur(10px)"
-                    p={4} 
-                    rounded="md"
-                    border={currentStyle.border}
-                    transition="all 0.3s ease"
-                    _hover={{ bg: currentStyle.hoverBg }}
-                    color={currentStyle.text}
-                >
-                    <Text fontWeight="bold" mb={2} color={currentStyle.text}>
-                        Tech stacks I'm familiar with
-                    </Text>
-                    <HStack gap={4}>
-                        {['React', 'Tailwind', 'Puppeteer'].map((tech) => (
-                            <Box
-                                key={tech}
-                                bg={currentStyle.childBg}
-                                p={2}
-                                rounded="md"
-                                border={currentStyle.border}
-                                transition="all 0.3s ease"
-                                _hover={{ bg: currentStyle.hoverBg }}
-                                color={currentStyle.text}
-                            >
-                                {tech}
-                            </Box>
-                        ))}
-                    </HStack>
-                </Box>
+                <TechStack style={currentStyle} />
             </Box>
 
             {/* Current Focus - 1 column */}
