@@ -1,15 +1,14 @@
 import {
     Box,
-    HStack,
     Text,
     SimpleGrid,
 } from "@chakra-ui/react";
 import { useTheme } from "../contexts/ThemeContext";
-import { BsLightbulb } from 'react-icons/bs';
 import LocationWidget from "./widgets/LocationWidget";
 import GithubActivity from "./widgets/GithubActivity";
 import TechStack from "./widgets/TechStack";
 import TypingSpeed from "./widgets/TypingSpeed";
+import CurrentFocus from "./widgets/CurrentFocus";
 
 export const ProfileWidget = () => {
     const { theme } = useTheme();
@@ -118,48 +117,11 @@ export const ProfileWidget = () => {
                 <TechStack style={currentStyle} />
             </Box>
 
-            {/* Current Focus - 1 column */}
-            <Box>
-                <Box
-                    bg={currentStyle.childBg}
-                    backdropFilter="blur(10px)"
-                    p={4}
-                    rounded="md"
-                    border={currentStyle.border}
-                    transition="all 0.3s ease"
-                    _hover={{ bg: currentStyle.hoverBg }}
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    color={currentStyle.text}
-                >
-                    <HStack>
-                        <BsLightbulb color={currentStyle.accent} />
-                        <Text color={currentStyle.textSecondary}>Current Focus</Text>
-                    </HStack>
-                    <Text fontWeight="bold" color={currentStyle.text} mt={2}>
-                        Machine Learning
-                    </Text>
-                    <Text fontSize="sm" color={currentStyle.textSecondary} textAlign="center">
-                        Exploring Neural Networks & Deep Learning
-                    </Text>
-                    <Box
-                        w="100%"
-                        h="2px"
-                        bg={currentStyle.accent}
-                        mt={3}
-                        opacity={0.3}
-                        borderRadius="full"
-                    >
-                        <Box
-                            w="65%"
-                            h="100%"
-                            bg={currentStyle.accent}
-                            borderRadius="full"
-                        />
-                    </Box>
-                </Box>
+            {/* Current Focus - 2 columns */}
+            <Box gridColumn={{ base: "1", lg: "1 / span 2" }}>
+                <CurrentFocus style={currentStyle} />
             </Box>
+
         </SimpleGrid>
     );
 };
