@@ -33,17 +33,6 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
         return () => clearTimeout(timer);
     }, []);
 
-    // Function to get last 6 months of data
-    const selectLastSixMonths = (contributions: any) => {
-        const currentDate = new Date();
-        const sixMonthsAgo = new Date(currentDate.setMonth(currentDate.getMonth() - 6));
-
-        return contributions.filter((day: any) => {
-            const contributionDate = new Date(day.date);
-            return contributionDate >= sixMonthsAgo;
-        });
-    };
-
     // Custom tooltip format
     const renderTooltip = (day: any) => {
         const date = new Date(day.date);
@@ -81,12 +70,16 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                     _hover={{ bg: style.hoverBg }}
                     color={style.text}
                     position="relative"
-                    height="160px"
+                    minHeight="140px"  // Reduced from 180px
                     width="100%"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    overflow="hidden"  // Added to prevent overflow
                 >
                     {isLoading && (
                         <Skeleton
-                            height="140px"
+                            height="100%"
                             width="100%"
                         />
                     )}
@@ -95,17 +88,18 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                         top="0"
                         left="0"
                         width="100%"
-                        height="100%"
+                        height="auto"  // Changed from 100%
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
                         opacity={isLoading ? 0 : 1}
                         transition="opacity 0.3s ease"
+                        p={1}  // Reduced padding
+                        overflow="hidden"  // Added to prevent overflow
                     >
                         <GitHubCalendar
                             username={username}
                             colorScheme='dark'
-                            transformData={selectLastSixMonths}
                             hideColorLegend={true}
                             renderBlock={(block, activity) => (
                                 <Tooltip
@@ -119,7 +113,9 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                             style={{
                                 color: style.text,
                                 width: '100%',
-                                height: '140px',
+                                height: 'auto',  // Changed from 100%
+                                maxWidth: '100%',  // Added to ensure fitting
+                                fontSize: '10px',  // Added to make text smaller
                             }}
                             theme={{
                                 dark: [
