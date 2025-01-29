@@ -6,25 +6,7 @@ import Nama from "./components/Nama"
 import BottomNav from "./components/BottomNav"
 import { ProfileWidget } from "./components/ProfileWidget"
 import Category from "./components/Category"
-import Projects from "./components/Projects"
-import WorkExperience from "./components/WorkExperience"
-import Certificate from "./components/Certificate"
-import { useCategory } from "./contexts/CategoryContext"
-
-const ContentRenderer = () => {
-  const { activeCategory } = useCategory();
-  
-  switch (activeCategory) {
-    case 'project':
-      return <Projects />;
-    case 'experience':
-      return <WorkExperience />;
-    case 'certificate':
-      return <Certificate />;
-    default:
-      return null;
-  }
-}
+import CategoryContent from './components/CategoryContent';
 
 function App() {
   return (
@@ -35,9 +17,7 @@ function App() {
           <Nama />
           <ProfileWidget />
           <Category />
-          <Box mt={4}>
-            <ContentRenderer />
-          </Box>
+          <CategoryContent />
           <BottomNav />
         </Box>
       </CategoryProvider>
