@@ -10,7 +10,7 @@ interface CategoryContextType {
 const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
 
 export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [activeCategory, setActiveCategory] = useState<CategoryType>(null);
+    const [activeCategory, setActiveCategory] = useState<CategoryType>('project');  // Changed from null to 'project'
 
     return (
         <CategoryContext.Provider value={{ activeCategory, setActiveCategory }}>
