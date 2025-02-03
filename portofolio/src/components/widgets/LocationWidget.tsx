@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import L from 'leaflet';
@@ -28,6 +28,14 @@ interface LocationWidgetProps {
 const LocationWidget: React.FC<LocationWidgetProps> = ({ style }) => {
     const position: [number, number] = [-7.965811, 112.634270]; // Malang City coordinates
 
+    // Create custom icon
+    const customIcon = new L.DivIcon({
+        className: 'custom-marker',
+        html: '<div class="pulse-dot"></div>',
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+    });
+
     return (
         <Box
             bg={style.childBg}
@@ -48,20 +56,50 @@ const LocationWidget: React.FC<LocationWidgetProps> = ({ style }) => {
                 Location
             </Text>
             <Box h="200px" position="relative" overflow="hidden">
+                <Box as="style">{`
+                    .custom-marker {
+                        background: transparent;
+                        border: none;
+                    }
+                    .pulse-dot {
+                        width: 12px;
+                        height: 12px;
+                        background: #4CAF50;
+                        border-radius: 50%;
+                        box-shadow: 0 0 0 #4CAF50;
+                        animation: pulse 2s infinite;
+                    }
+                    @keyframes pulse {
+                        0% {
+                            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+                        }
+                        70% {
+                            box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+                        }
+                        100% {
+                            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+                        }
+                    }
+                `}</Box>
                 <MapContainer 
                     center={position} 
-                    zoom={12}
+                    zoom={13}
                     zoomControl={false}
                     dragging={false}
                     doubleClickZoom={false}
+                    scrollWheelZoom={false}
+                    touchZoom={false}
                     style={{ height: '100%', width: '100%', borderRadius: '0.375rem' }}
                 >
                     <TileLayer
-                        attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>'
-                        url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                         className="map-tiles"
                     />
-                    <div className="location-dot" />
+                    <Marker 
+                        position={position} 
+                        icon={customIcon}
+                    />
                 </MapContainer>
             </Box>
         </Box>
