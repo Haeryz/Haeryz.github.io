@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base: "/Haeryz.github.io/",
+  base: '/',  // Change this from "/Haeryz.github.io/" to "/"
   build: {
     chunkSizeWarningLimit: 1000, // Increase size limit to 1000kb
     rollupOptions: {
