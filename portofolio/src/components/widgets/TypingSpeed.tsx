@@ -73,7 +73,7 @@ const TypingSpeed = ({ style }: TypingSpeedProps) => {
         // Refresh every 5 minutes
         const interval = setInterval(fetchWPM, 300000);
         return () => clearInterval(interval);
-    }, []);
+    }, [wpm]);
 
     if (!wpm) {
         return (
@@ -102,19 +102,19 @@ const TypingSpeed = ({ style }: TypingSpeedProps) => {
     const isIncrease = prevWpm ? wpm > prevWpm : null;
 
     return (
-        <VStack gap={3}>
+        <VStack gap={{ base: 2, md: 3 }}>
             <MotionHStack
                 variants={scaleAnimation}
                 initial="initial"
                 animate="animate"
             >
-                <Icon as={BsSpeedometer} color={style?.accent} boxSize={6} />
+                <Icon as={BsSpeedometer} color={style?.accent} boxSize={{ base: 5, md: 6 }} />
             </MotionHStack>
             
             <AnimatePresence mode="wait">
                 <MotionText
                     key={wpm}
-                    fontSize="4xl"
+                    fontSize={{ base: "3xl", md: "4xl" }}
                     fontWeight="bold"
                     color={style?.text}
                     initial={{ y: 20, opacity: 0 }}
@@ -123,13 +123,13 @@ const TypingSpeed = ({ style }: TypingSpeedProps) => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                     {wpm}
-                    <Text as="span" fontSize="xl" color={style?.textSecondary}> wpm</Text>
+                    <Text as="span" fontSize={{ base: "lg", md: "xl" }} color={style?.textSecondary}> wpm</Text>
                 </MotionText>
             </AnimatePresence>
 
             {isIncrease !== null && (
                 <MotionText
-                    fontSize="sm"
+                    fontSize={{ base: "xs", md: "sm" }}
                     color={style?.textSecondary}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

@@ -75,28 +75,40 @@ export const ProfileWidget = () => {
             </GridItem>
 
             {/* Row 2 */}
-            <GridItem colSpan={{ base: 1, md: 2, lg: 1 }}>
+            <GridItem 
+                colSpan={{ base: 1, md: 2, lg: 1 }}
+                minH={{ base: "140px", md: "160px", lg: "180px" }}  // Adjusted heights
+            >
                 <Box
                     bg={currentStyle.childBg}
                     backdropFilter="blur(10px)"
-                    p={4}
+                    p={{ base: 3, md: 4 }}  // Responsive padding
                     rounded="md"
                     border={currentStyle.border}
                     transition="all 0.3s ease"
                     _hover={{ bg: currentStyle.hoverBg }}
                     height="100%"
-                    minH="200px"
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <Text color={currentStyle.textSecondary} mb={3}>Typing speed</Text>
+                    <Text 
+                        color={currentStyle.textSecondary} 
+                        mb={2} 
+                        fontSize={{ base: "sm", md: "md" }}
+                    >
+                        Typing speed
+                    </Text>
                     <TypingSpeed style={currentStyle} />
                 </Box>
             </GridItem>
 
-            <GridItem colSpan={{ base: 1, md: 2, lg: 3 }}>
+            <GridItem 
+                colSpan={{ base: 1, md: 2, lg: 3 }}
+                minH={{ base: "140px", md: "160px", lg: "180px" }}  // Match height with TypingSpeed
+                overflow="hidden"
+            >
                 <GithubActivity style={currentStyle} />
             </GridItem>
 

@@ -34,7 +34,7 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
     }, []);
 
     // Custom tooltip format
-    const renderTooltip = (day: any) => {
+    const renderTooltip = (day: { date: string; count: number }) => {
         const date = new Date(day.date);
         const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return (
@@ -63,19 +63,19 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
             <Link href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer">
                 <Box
                     bg={style.childBg}
-                    p={4}
+                    p={{ base: 1, md: 2 }}  // Responsive padding
                     rounded="md"
                     border={style.border}
                     transition="all 0.3s ease"
                     _hover={{ bg: style.hoverBg }}
                     color={style.text}
                     position="relative"
-                    minHeight="140px"  // Reduced from 180px
+                    minHeight={{ base: "110px", md: "130px", lg: "140px" }}  // Responsive height
                     width="100%"
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-                    overflow="hidden"  // Added to prevent overflow
+                    overflow="hidden"  // Add overflow control
                 >
                     {isLoading && (
                         <Skeleton
@@ -85,17 +85,38 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                     )}
                     <Box
                         position={isLoading ? "absolute" : "relative"}
-                        top="0"
-                        left="0"
                         width="100%"
-                        height="auto"  // Changed from 100%
+                        height="100%"
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
                         opacity={isLoading ? 0 : 1}
                         transition="opacity 0.3s ease"
-                        p={1}  // Reduced padding
-                        overflow="hidden"  // Added to prevent overflow
+                        overflow="hidden"
+                        css={{
+                            '.react-github-calendar': {
+                                width: '100% !important',
+                                maxWidth: '100% !important',
+                                overflow: 'hidden',
+                            },
+                            '.react-github-calendar > div': {
+                                width: '100% !important',
+                                display: 'flex !important',
+                                justifyContent: 'center',
+                                overflow: 'hidden',
+                            },
+                            '.react-github-calendar svg': {
+                                width: '100% !important',
+                                height: 'auto !important',
+                                transform: { 
+                                    base: 'scale(0.6)', 
+                                    sm: 'scale(0.7)',
+                                    md: 'scale(0.75)', 
+                                    lg: 'scale(0.8)' 
+                                },
+                                transformOrigin: 'center center',
+                            }
+                        }}
                     >
                         <GitHubCalendar
                             username={username}
@@ -113,10 +134,12 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                             style={{
                                 color: style.text,
                                 width: '100%',
-                                height: 'auto',  // Changed from 100%
-                                maxWidth: '100%',  // Added to ensure fitting
-                                fontSize: '10px',  // Added to make text smaller
+                                height: 'auto',
+                                maxWidth: '100%',
+                                fontSize: '6px',
                             }}
+                            blockSize={12}
+                            fontSize={10}
                             theme={{
                                 dark: [
                                     style.childBg,
