@@ -80,6 +80,9 @@ const LocationWidget: React.FC<LocationWidgetProps> = ({ style }) => {
                             box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
                         }
                     }
+                    .leaflet-control-attribution {
+                        display: none;
+                    }
                 `}</Box>
                 <MapContainer 
                     center={position} 
@@ -89,10 +92,10 @@ const LocationWidget: React.FC<LocationWidgetProps> = ({ style }) => {
                     doubleClickZoom={false}
                     scrollWheelZoom={false}
                     touchZoom={false}
+                    attributionControl={false}
                     style={{ height: '100%', width: '100%', borderRadius: '0.375rem' }}
                 >
                     <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                         className="map-tiles"
                     />
