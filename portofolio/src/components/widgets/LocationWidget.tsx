@@ -46,16 +46,24 @@ const LocationWidget: React.FC<LocationWidgetProps> = ({ style }) => {
             transition="all 0.3s ease"
             _hover={{ bg: style.hoverBg }}
             color={style.text}
+            height="100%"
+            display="flex"
+            flexDirection="column"
         >
             <Text 
-                mb={2} 
+                mb={{ base: 2, md: 3 }}
                 fontWeight="bold" 
                 color={style.text}
-                textAlign="center"  
+                textAlign="center"
             >
                 Location
             </Text>
-            <Box h="200px" position="relative" overflow="hidden">
+            <Box 
+                flex="1" 
+                position="relative" 
+                overflow="hidden"
+                minH={{ base: "180px", md: "200px" }}
+            >
                 <Box as="style">{`
                     .custom-marker {
                         background: transparent;

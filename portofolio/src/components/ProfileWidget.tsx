@@ -10,6 +10,7 @@ import GithubActivity from "./widgets/GithubActivity";
 import TechStack from "./widgets/TechStack";
 import TypingSpeed from "./widgets/TypingSpeed";
 import CurrentFocus from "./widgets/CurrentFocus";
+import FeaturedWork from "./widgets/FeaturedWork";
 
 export const ProfileWidget = () => {
     const { theme } = useTheme();
@@ -55,43 +56,21 @@ export const ProfileWidget = () => {
             color={currentStyle.text}
         >
             {/* Row 1 */}
-            <GridItem colSpan={{ base: 1, lg: 2 }}>
-                <LocationWidget style={currentStyle} />
+            <GridItem 
+                colSpan={{ base: 1, lg: 2 }} 
+                height={{ base: "250px", md: "300px", lg: "350px" }}
+            >
+                <Box height="100%">
+                    <LocationWidget style={currentStyle} />
+                </Box>
             </GridItem>
 
-            <GridItem colSpan={{ base: 1, lg: 2 }}>
-                <Box 
-                    bg={currentStyle.childBg}
-                    backdropFilter="blur(10px)"
-                    p={4} 
-                    rounded="md"
-                    border={currentStyle.border}
-                    transition="all 0.3s ease"
-                    _hover={{ bg: currentStyle.hoverBg }}
-                    height="100%"
-                    minH="200px"
-                >
-                    <Text fontWeight="bold" mb={3} color={currentStyle.text}>Featured work</Text>
-                    <Box
-                        bg={currentStyle.childBg}
-                        p={4}
-                        rounded="md"
-                        textAlign="center"
-                        transition="all 0.3s ease"
-                        _hover={{ bg: currentStyle.hoverBg }}
-                        border={currentStyle.border}
-                        height="calc(100% - 40px)"
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="center"
-                    >
-                        <Text fontWeight="semibold" color={currentStyle.text} mb={2}>
-                            Bookmarked
-                        </Text>
-                        <Text fontSize="sm" color={currentStyle.textSecondary}>
-                            Effortlessly save and organize content
-                        </Text>
-                    </Box>
+            <GridItem 
+                colSpan={{ base: 1, lg: 2 }}
+                height={{ base: "350px", md: "300px", lg: "350px" }}
+            >
+                <Box height="100%">
+                    <FeaturedWork style={currentStyle} />
                 </Box>
             </GridItem>
 
