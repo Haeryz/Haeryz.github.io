@@ -4,6 +4,53 @@ import { useTheme } from '../contexts/ThemeContext'
 import { FaBook, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { Button } from './ui/button'
 import { TypeAnimation } from 'react-type-animation';
+import pfp from '../assets/pfp.jpg';
+
+const Avatar = () => {
+    return (
+        <div
+            style={{
+                width: '156px', // Slightly larger to accommodate gradient border
+                height: '156px',
+                borderRadius: '50%',
+                margin: '0 auto',
+                position: 'relative',
+                background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                padding: '3px', // This creates the border effect
+            }}
+        >
+            <div
+                style={{
+                    background: '#000', // This matches your dark background
+                    borderRadius: '50%',
+                    padding: '2px', // Small gap between image and gradient
+                    height: '100%',
+                    width: '100%',
+                }}
+            >
+                <div
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                    }}
+                >
+                    <img
+                        src={pfp}
+                        alt="Profile Picture"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: '50% 10%'
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
 
 const AnimatedLetter = ({ letter, accentColor }: { letter: string; accentColor: string }) => {
     return (
@@ -14,25 +61,14 @@ const AnimatedLetter = ({ letter, accentColor }: { letter: string; accentColor: 
                 position: 'relative'
             }}
             whileHover={{ 
-                scale: 1.3,
+                scale: 1.1, // Reduced scale for subtler effect
                 color: accentColor,
-                y: -2,
-                rotate: [-2, 0, 2],
                 transition: {
-                    scale: {
-                        type: "spring",
-                        stiffness: 500,
-                        damping: 10
-                    },
-                    rotate: {
-                        duration: 0.2,
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                    }
+                    duration: 0.2,
+                    ease: "easeOut"
                 }
             }}
-            initial={{ y: 0, rotate: 0 }}
-            whileTap={{ scale: 0.8 }}
+            whileTap={{ scale: 0.95 }}
         >
             {letter}
             <motion.span
@@ -106,7 +142,7 @@ const Nama = () => {
                     px={3}
                     py={1}
                     borderRadius="full"
-                    mb={2}
+                    mb={4} // Increased margin bottom
                 >
                     <Box
                         w={2}
@@ -123,6 +159,12 @@ const Nama = () => {
                         Available for projects
                     </Text>
                 </Flex>
+
+                {/* Add Avatar here */}
+                <Box mb={6}>
+                    <Avatar />
+                </Box>
+
                 <Text fontSize="4xl" fontWeight="bold">
                     <AnimatedText text="Hi, I'm Hariz." accentColor={currentStyle.accent} />
                 </Text>
