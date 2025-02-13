@@ -44,15 +44,15 @@ export const ProfileWidget = () => {
     return (
         <Box 
             width="100%" 
-            maxWidth="100%"        // Changed from 100vw
-            px={{ base: 1, md: 3, lg: 4 }}
+            maxWidth="100%"
+            px={{ base: 1, md: 4, lg: 4 }}
             mx="auto"
             overflow="hidden"
         >
             <Grid 
                 templateColumns={{
-                    base: "minmax(0, 1fr)",  // Forces children to stay within container
-                    md: "repeat(2, 1fr)",
+                    base: "minmax(0, 1fr)",
+                    md: "repeat(6, 1fr)",    // 6 columns for more flexible tablet layout
                     lg: "repeat(4, 1fr)"
                 }}
                 gap={{ base: 2, md: 4 }}
@@ -61,20 +61,20 @@ export const ProfileWidget = () => {
                 color={currentStyle.text}
                 width="100%"
             >
-                {/* Featured Work */}
+                {/* Featured Work - Full width on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 2 }}
-                    minH={{ base: "auto", md: "350px" }}
-                    width="100%"           // Added width control
+                    colSpan={{ base: 1, md: 6, lg: 2 }}
+                    minH={{ base: "auto", md: "400px" }}
+                    width="100%"
                 >
                     <Box width="100%" height="100%">
                         <FeaturedWork style={currentStyle} />
                     </Box>
                 </GridItem>
 
-                {/* Location */}
+                {/* Location - 4 columns on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 2 }}
+                    colSpan={{ base: 1, md: 4, lg: 2 }}
                     minH={{ base: "200px", md: "300px" }}
                     width="100%"
                 >
@@ -83,10 +83,10 @@ export const ProfileWidget = () => {
                     </Box>
                 </GridItem>
 
-                {/* Typing Speed */}
+                {/* Typing Speed - 2 columns on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 1 }}
-                    minH={{ base: "100px", md: "120px" }}
+                    colSpan={{ base: 1, md: 2, lg: 1 }}
+                    minH={{ base: "100px", md: "300px" }}
                     width="100%"
                 >
                     <Box
@@ -106,10 +106,10 @@ export const ProfileWidget = () => {
                     </Box>
                 </GridItem>
 
-                {/* GitHub Activity */}
+                {/* GitHub Activity - Full width on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 3 }}
-                    minH={{ base: "120px", md: "120px" }}
+                    colSpan={{ base: 1, md: 6, lg: 3 }}
+                    minH={{ base: "120px", md: "150px" }}
                     width="100%"
                 >
                     <Box width="100%" height="100%">
@@ -117,10 +117,10 @@ export const ProfileWidget = () => {
                     </Box>
                 </GridItem>
 
-                {/* Current Focus */}
+                {/* Current Focus - 3 columns on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 2 }}
-                    minH={{ base: "280px", md: "280px" }}
+                    colSpan={{ base: 1, md: 3, lg: 2 }}
+                    minH={{ base: "280px", md: "300px" }}
                     width="100%"
                 >
                     <Box width="100%" height="100%">
@@ -128,10 +128,10 @@ export const ProfileWidget = () => {
                     </Box>
                 </GridItem>
 
-                {/* Tech Stack */}
+                {/* Tech Stack - 3 columns on tablet */}
                 <GridItem 
-                    colSpan={{ base: 1, md: 2 }}
-                    minH={{ base: "280px", md: "280px" }}
+                    colSpan={{ base: 1, md: 3, lg: 2 }}
+                    minH={{ base: "280px", md: "300px" }}
                     width="100%"
                 >
                     <Box width="100%" height="100%">
