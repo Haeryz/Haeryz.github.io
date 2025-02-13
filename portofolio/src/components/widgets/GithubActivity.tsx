@@ -51,8 +51,8 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
             border={style.border}
             transition="all 0.3s ease"
             _hover={{ bg: style.hoverBg }}
-            color={style.text}
-            gridColumn={{ base: "1", lg: "1 / span 2" }}  // Make it span 2 columns on large 
+            height="100%"
+            width="100%"
         >
             <HStack align="center" mb={2}>
                 <BiGitBranch size="20px" color={style.accent} />
@@ -60,61 +60,64 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                     GitHub activity
                 </Text>
             </HStack>
-            <Link href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer">
+            <Link 
+                href={`https://github.com/${username}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                width="100%"
+                display="block"
+            >
                 <Box
                     bg={style.childBg}
-                    p={{ base: 1, md: 2 }}  // Responsive padding
+                    p={2}
                     rounded="md"
                     border={style.border}
                     transition="all 0.3s ease"
                     _hover={{ bg: style.hoverBg }}
-                    color={style.text}
-                    position="relative"
-                    minHeight={{ base: "110px", md: "130px", lg: "140px" }}  // Responsive height
                     width="100%"
+                    height="100%"
+                    position="relative"
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-                    overflow="hidden"  // Add overflow control
                 >
                     {isLoading && (
-                        <Skeleton
-                            height="100%"
-                            width="100%"
-                        />
+                        <Skeleton height="100%" width="100%" />
                     )}
                     <Box
                         position={isLoading ? "absolute" : "relative"}
                         width="100%"
-                        height="100%"
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
                         opacity={isLoading ? 0 : 1}
                         transition="opacity 0.3s ease"
-                        overflow="hidden"
                         css={{
                             '.react-github-calendar': {
                                 width: '100% !important',
-                                maxWidth: '100% !important',
-                                overflow: 'hidden',
                             },
                             '.react-github-calendar > div': {
                                 width: '100% !important',
                                 display: 'flex !important',
                                 justifyContent: 'center',
-                                overflow: 'hidden',
                             },
                             '.react-github-calendar svg': {
                                 width: '100% !important',
                                 height: 'auto !important',
-                                transform: { 
-                                    base: 'scale(0.6)', 
-                                    sm: 'scale(0.7)',
-                                    md: 'scale(0.75)', 
-                                    lg: 'scale(0.8)' 
-                                },
-                                transformOrigin: 'center center',
+                                maxHeight: '100%',
+                                aspectRatio: '4/1',
+                            },
+                            '@media (max-width: 768px)': {
+                                '.react-github-calendar svg': {
+                                    transform: 'scale(0.8)',
+                                    transformOrigin: 'center center',
+                                }
+                            },
+                            '@media (max-width: 480px)': {
+                                '.react-github-calendar svg': {
+                                    transform: 'scale(0.6)',
+                                }
+                            },
+                            '.react-github-calendar rect': {
+                                stroke: `${style.childBg}`,
+                                strokeWidth: '1.5px', // Increased stroke width
                             }
                         }}
                     >
@@ -131,23 +134,21 @@ const GithubActivity: React.FC<Props> = ({ style }) => {
                                     {block}
                                 </Tooltip>
                             )}
-                            style={{
-                                color: style.text,
-                                width: '100%',
-                                height: 'auto',
-                                maxWidth: '100%',
-                                fontSize: '6px',
-                            }}
-                            blockSize={12}
-                            fontSize={10}
+                            blockSize={12} // Increased from 10
+                            fontSize={12}
                             theme={{
                                 dark: [
-                                    style.childBg,
-                                    `${style.accent}33`,
-                                    `${style.accent}66`,
-                                    `${style.accent}99`,
-                                    style.accent,
+                                    style.childBg,                    // Level 0 (empty)
+                                    `${style.accent}66`,             // Level 1 (40% opacity)
+                                    `${style.accent}99`,             // Level 2 (60% opacity)
+                                    `${style.accent}CC`,             // Level 3 (80% opacity)
+                                    `${style.accent}FF`,             // Level 4 (100% opacity)
                                 ]
+                            }}
+                            style={{
+                                color: style.text, // Changed from textSecondary for better contrast
+                                margin: '0 auto',
+                                fontWeight: '500', // Added font weight
                             }}
                         />
                     </Box>
