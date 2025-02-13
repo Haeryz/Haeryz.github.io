@@ -1,9 +1,4 @@
-import {
-    Box,
-    Text,
-    Grid,
-    GridItem,
-} from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { useTheme } from "../contexts/ThemeContext";
 import LocationWidget from "./widgets/LocationWidget";
 import GithubActivity from "./widgets/GithubActivity";
@@ -47,79 +42,103 @@ export const ProfileWidget = () => {
     const currentStyle = glassStyle[theme];
 
     return (
-        <Grid 
-            templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }}
-            gap={4}
-            maxW="1200px" 
+        <Box 
+            width="100%" 
+            maxWidth="100%"        // Changed from 100vw
+            px={{ base: 1, md: 3, lg: 4 }}
             mx="auto"
-            p={4}
-            color={currentStyle.text}
+            overflow="hidden"
         >
-            {/* Row 1 */}
-            <GridItem 
-                colSpan={{ base: 1, lg: 2 }} 
-                height={{ base: "250px", md: "300px", lg: "350px" }}
+            <Grid 
+                templateColumns={{
+                    base: "minmax(0, 1fr)",  // Forces children to stay within container
+                    md: "repeat(2, 1fr)",
+                    lg: "repeat(4, 1fr)"
+                }}
+                gap={{ base: 2, md: 4 }}
+                maxW={{ base: "100%", lg: "1200px" }}
+                mx="auto"
+                color={currentStyle.text}
+                width="100%"
             >
-                <Box height="100%">
-                    <LocationWidget style={currentStyle} />
-                </Box>
-            </GridItem>
-
-            <GridItem 
-                colSpan={{ base: 1, lg: 2 }}
-                height={{ base: "350px", md: "300px", lg: "350px" }}
-            >
-                <Box height="100%">
-                    <FeaturedWork style={currentStyle} />
-                </Box>
-            </GridItem>
-
-            {/* Row 2 */}
-            <GridItem 
-                colSpan={{ base: 1, md: 2, lg: 1 }}
-                minH={{ base: "140px", md: "160px", lg: "180px" }}  // Adjusted heights
-            >
-                <Box
-                    bg={currentStyle.childBg}
-                    backdropFilter="blur(10px)"
-                    p={{ base: 3, md: 4 }}  // Responsive padding
-                    rounded="md"
-                    border={currentStyle.border}
-                    transition="all 0.3s ease"
-                    _hover={{ bg: currentStyle.hoverBg }}
-                    height="100%"
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
+                {/* Featured Work */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 2 }}
+                    minH={{ base: "auto", md: "350px" }}
+                    width="100%"           // Added width control
                 >
-                    <Text 
-                        color={currentStyle.textSecondary} 
-                        mb={2} 
-                        fontSize={{ base: "sm", md: "md" }}
+                    <Box width="100%" height="100%">
+                        <FeaturedWork style={currentStyle} />
+                    </Box>
+                </GridItem>
+
+                {/* Location */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 2 }}
+                    minH={{ base: "200px", md: "300px" }}
+                    width="100%"
+                >
+                    <Box width="100%" height="100%">
+                        <LocationWidget style={currentStyle} />
+                    </Box>
+                </GridItem>
+
+                {/* Typing Speed */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 1 }}
+                    minH={{ base: "100px", md: "120px" }}
+                    width="100%"
+                >
+                    <Box
+                        bg={currentStyle.childBg}
+                        p={{ base: 3, md: 4 }}
+                        rounded="md"
+                        border={currentStyle.border}
+                        height="100%"
+                        width="100%"
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        maxWidth="100%"
                     >
-                        Typing speed
-                    </Text>
-                    <TypingSpeed style={currentStyle} />
-                </Box>
-            </GridItem>
+                        <TypingSpeed style={currentStyle} />
+                    </Box>
+                </GridItem>
 
-            <GridItem 
-                colSpan={{ base: 1, md: 2, lg: 3 }}
-                minH={{ base: "140px", md: "160px", lg: "180px" }}  // Match height with TypingSpeed
-                overflow="hidden"
-            >
-                <GithubActivity style={currentStyle} />
-            </GridItem>
+                {/* GitHub Activity */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 3 }}
+                    minH={{ base: "120px", md: "120px" }}
+                    width="100%"
+                >
+                    <Box width="100%" height="100%">
+                        <GithubActivity style={currentStyle} />
+                    </Box>
+                </GridItem>
 
-            {/* Row 3 */}
-            <GridItem colSpan={{ base: 1, lg: 2 }}>
-                <CurrentFocus style={currentStyle} />
-            </GridItem>
+                {/* Current Focus */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 2 }}
+                    minH={{ base: "280px", md: "280px" }}
+                    width="100%"
+                >
+                    <Box width="100%" height="100%">
+                        <CurrentFocus style={currentStyle} />
+                    </Box>
+                </GridItem>
 
-            <GridItem colSpan={{ base: 1, lg: 2 }}>
-                <TechStack style={currentStyle} />
-            </GridItem>
-        </Grid>
+                {/* Tech Stack */}
+                <GridItem 
+                    colSpan={{ base: 1, md: 2 }}
+                    minH={{ base: "280px", md: "280px" }}
+                    width="100%"
+                >
+                    <Box width="100%" height="100%">
+                        <TechStack style={currentStyle} />
+                    </Box>
+                </GridItem>
+            </Grid>
+        </Box>
     );
 };

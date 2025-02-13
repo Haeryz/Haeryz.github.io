@@ -12,7 +12,13 @@ function App() {
   return (
     <ThemeProvider>
       <CategoryProvider>
-        <Box position="relative" pb={20}>
+        <Box 
+          position="relative" 
+          pb={20}
+          width="100%"
+          maxWidth="100%"
+          overflow="hidden"
+        >
           <StarryBackground />
           <Nama />
           <ProfileWidget />

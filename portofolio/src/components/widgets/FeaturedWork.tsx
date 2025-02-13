@@ -57,6 +57,7 @@ const FeaturedWork = ({ style }: FeaturedWorkProps) => {
             height="100%"
             display="flex"
             flexDirection="column"
+            maxW="100%"
         >
             <Text 
                 fontWeight="bold" 
@@ -69,6 +70,7 @@ const FeaturedWork = ({ style }: FeaturedWorkProps) => {
                 overflowX="auto"
                 overflowY="hidden"
                 flex="1"
+                maxW="100%"
                 css={{
                     '&::-webkit-scrollbar': {
                         height: '8px',
@@ -83,10 +85,11 @@ const FeaturedWork = ({ style }: FeaturedWorkProps) => {
                     },
                     scrollbarWidth: 'none',
                     msOverflowStyle: 'none',
+                    '-webkit-overflow-scrolling': 'touch',
                 }}
             >
                 <HStack 
-                    gap={{ base: 3, md: 4 }} 
+                    gap={{ base: 2, sm: 3, md: 4 }} 
                     pb={2} 
                     height="calc(100% - 8px)"
                 >
@@ -97,8 +100,8 @@ const FeaturedWork = ({ style }: FeaturedWorkProps) => {
                             p={{ base: 3, md: 4 }}
                             rounded="md"
                             border={style.border}
-                            minW={{ base: "260px", md: "300px", lg: "350px" }}
-                            maxW={{ base: "300px", md: "350px", lg: "400px" }}
+                            minW={{ base: "85vw", sm: "280px", md: "300px", lg: "350px" }}
+                            maxW={{ base: "85vw", sm: "300px", md: "350px", lg: "400px" }}
                             height="100%"
                             flex="0 0 auto"
                             display="flex"
