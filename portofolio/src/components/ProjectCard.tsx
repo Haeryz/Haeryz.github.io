@@ -27,6 +27,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         >
             <Box position="relative" h="200px" flexShrink={0}>
                 <Image
+                    loading="lazy"
                     objectFit="cover"
                     w="100%"
                     h="100%"
