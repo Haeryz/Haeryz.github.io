@@ -21,7 +21,7 @@ function App() {
         <StarryBackground />
         <Nama />
         <ProfileWidget />
-        <Box maxW="55%" mx="auto" mt={6}>
+        <Box mt={6}>  {/* Removed maxW="55%" restriction */}
           <Suspense fallback={<Box>Loading projects...</Box>}>
             <Projects />
           </Suspense>

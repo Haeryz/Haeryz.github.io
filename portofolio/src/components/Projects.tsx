@@ -29,13 +29,19 @@ const Projects = () => {
         <Box w="100%" py={8}>
             <Box
                 display="grid"
-                gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
-                gap={6}
+                gridTemplateColumns={{
+                    base: "repeat(2, 1fr)",    // Keep 2 columns but with better spacing
+                    sm: "repeat(2, 1fr)",
+                    md: "repeat(2, 1fr)",
+                    lg: "repeat(3, 1fr)",
+                    xl: "repeat(3, 1fr)"
+                }}
+                gap={{ base: 4, sm: 5, md: 6 }}    // Increased gap for mobile
                 justifyItems="center"
                 alignItems="stretch"
                 mx="auto"
-                maxW="1200px"
-                px={4}
+                maxW={{ base: "100%", sm: "90%", md: "95%", lg: "1200px" }}
+                px={{ base: 3, sm: 4, md: 5 }}     // Increased padding
             >
                 {visibleProjects.map((project) => (
                     <ProjectCard key={project.id} project={project} />
