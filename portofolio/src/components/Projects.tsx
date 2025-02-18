@@ -26,22 +26,18 @@ const Projects = () => {
     }, [visibleProjects.length]);
 
     return (
-        <Box w="100%" py={8}>
+        <Box w="100%" py={4}>
             <Box
                 display="grid"
                 gridTemplateColumns={{
-                    base: "repeat(2, 1fr)",    // Keep 2 columns but with better spacing
-                    sm: "repeat(2, 1fr)",
+                    base: "repeat(2, 1fr)",
                     md: "repeat(2, 1fr)",
-                    lg: "repeat(3, 1fr)",
-                    xl: "repeat(3, 1fr)"
+                    lg: "repeat(3, 1fr)"
                 }}
-                gap={{ base: 4, sm: 5, md: 6 }}    // Increased gap for mobile
-                justifyItems="center"
-                alignItems="stretch"
+                gap={{ base: 3, sm: 4, md: 5, lg: 6 }}
+                px={{ base: 2, sm: 4, md: 6 }}
                 mx="auto"
-                maxW={{ base: "100%", sm: "90%", md: "95%", lg: "1200px" }}
-                px={{ base: 3, sm: 4, md: 5 }}     // Increased padding
+                maxW={{ base: "100%", lg: "1280px" }}
             >
                 {visibleProjects.map((project) => (
                     <ProjectCard key={project.id} project={project} />

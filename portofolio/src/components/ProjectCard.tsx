@@ -14,13 +14,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             overflow="hidden"
             w="100%"
             h="100%"
-            maxW={{ base: "100%", sm: "440px", md: "380px" }}  // Allow full width on mobile
-            minH={{ base: "300px", sm: "340px", md: "380px" }}  // Increased mobile height
+            maxW={{ base: "100%", sm: "100%", md: "100%" }}
+            minH={{ base: "280px", sm: "300px", md: "340px" }}
             display="flex"
-            transition="all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+            transition="all 0.3s ease"
             _hover={{
-                transform: { base: 'none', md: 'translateY(-8px)' }, // Disable hover effect on mobile
-                shadow: { base: 'lg', md: '2xl' }
+                transform: { base: 'none', md: 'translateY(-4px)' },
+                shadow: { base: 'md', md: 'xl' }
             }}
             borderRadius={{ base: "xl", md: "2xl" }}
             position="relative"
@@ -31,7 +31,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         >
             <Box 
                 position="relative" 
-                h={{ base: "130px", sm: "140px", md: "160px" }}  // Increased mobile image height
+                h={{ base: "120px", sm: "130px", md: "150px" }}
                 flexShrink={0} 
                 overflow="hidden"
             >
@@ -56,7 +56,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 />
             </Box>
             <Box 
-                p={{ base: 3, sm: 3, md: 4 }}  // Increased mobile padding
+                p={{ base: 2.5, sm: 3, md: 4 }}
                 flex="1" 
                 display="flex" 
                 flexDirection="column"
@@ -64,8 +64,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             >
                 <Card.Body p={0} flex="1">
                     <HStack 
-                        gap={{ base: 2, sm: 2 }}  // Increased gap
-                        mb={{ base: 2, md: 2 }}   // Consistent margin
+                        gap={{ base: 1, sm: 2 }}
+                        mb={{ base: 1.5, md: 2 }}
                         flexWrap="wrap"
                     >
                         {project.tags.map((tag, index) => {
@@ -73,12 +73,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             return (
                                 <Badge 
                                     key={index}
-                                    px={{ base: 2, md: 3 }}
-                                    py={{ base: 1, md: 1 }}
+                                    px={{ base: 1.5, md: 2 }}
+                                    py={{ base: 0.5, md: 1 }}
                                     borderRadius="full"
                                     bg={tagColor.bg}
                                     color={tagColor.text}
-                                    fontSize={{ base: "xs", sm: "xs" }}  // Increased mobile font
+                                    fontSize={{ base: "2xs", sm: "xs" }}
                                     fontWeight="medium"
                                     textTransform="lowercase"
                                     letterSpacing="wide"
@@ -97,9 +97,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                         })}
                     </HStack>
                     <Card.Title 
-                        fontSize={{ base: "sm", sm: "md", md: "lg" }}  // Adjusted font sizes
+                        fontSize={{ base: "sm", sm: "md", md: "lg" }}
                         fontWeight="bold"
-                        mb={{ base: 2, sm: 2, md: 2 }}                 // Consistent margin
+                        mb={{ base: 2, sm: 2, md: 2 }}
                         color="whiteAlpha.900"
                         letterSpacing="tight"
                     >
@@ -107,9 +107,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                     </Card.Title>
                     <Card.Description
                         color="whiteAlpha.800"
-                        fontSize={{ base: "xs", sm: "xs", md: "sm" }}  // Increased mobile font
-                        lineHeight={{ base: 1.4, sm: 1.5 }}            // Better line height
-                        mb={{ base: 2, sm: 2, md: 3 }}                 // Consistent margin
+                        fontSize={{ base: "xs", sm: "xs", md: "sm" }}
+                        lineHeight={{ base: 1.4, sm: 1.5 }}
+                        mb={{ base: 2, sm: 2, md: 3 }}
                         opacity={0.9}
                     >
                         {project.description}
@@ -118,7 +118,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 <Card.Footer p={0} mt="auto">
                     <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ width: '100%' }}>
                         <Button 
-                            size={{ base: "sm", md: "md" }}                // Smaller button on mobile
+                            size={{ base: "sm", md: "md" }}
                             w="100%"
                             bgGradient="linear(to-r, purple.500, blue.500)"
                             color="white"

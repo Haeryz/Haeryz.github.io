@@ -14,14 +14,12 @@ function App() {
       <Box 
         position="relative" 
         pb={20}
-        width="100%"
-        maxWidth="100%"
         overflow="hidden"
       >
         <StarryBackground />
         <Nama />
         <ProfileWidget />
-        <Box mt={6}>  {/* Removed maxW="55%" restriction */}
+        <Box mt={6}>
           <Suspense fallback={<Box>Loading projects...</Box>}>
             <Projects />
           </Suspense>
