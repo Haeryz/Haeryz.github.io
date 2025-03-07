@@ -15,7 +15,7 @@ export const projects: Project[] = [
         description: "E-Commerce web app that specifically sell construction materials to consumer",
         image: "https://images.unsplash.com/photo-1591588582259-e675bd2e6088?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         tags: ["MERN", "Websocket", "Zustand", "ChakraUI", "Zod", "Vite"],
-        link: "https://github.com/Haeryz/E-Commerce-depo-79"
+        link: "internship-bngefpfzewbrd8dw.southeastasia-01.azurewebsites.net"
     },
     {
         id: "3",
