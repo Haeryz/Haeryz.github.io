@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
-const PreLoader = () => {
+const PreLoader = ({ isCompleted = false }) => {
     const [progress, setProgress] = useState(0);
     const { themeColors } = useTheme();
 
@@ -14,9 +14,9 @@ const PreLoader = () => {
                     clearInterval(timer);
                     return 100;
                 }
-                return prev + 2; // Increased increment for faster loading
+                return prev + 4; // Even faster progress increment
             });
-        }, 20);
+        }, 15); // Shorter interval
 
         return () => clearInterval(timer);
     }, []);
@@ -34,6 +34,13 @@ const PreLoader = () => {
             justifyContent="center"
             background={themeColors.background}
             zIndex="9999"
+            className={isCompleted ? "fade-out" : ""}
+            css={{
+                '&.fade-out': {
+                    opacity: 0,
+                    transition: 'opacity 0.2s ease-out', // Much faster fade-out
+                }
+            }}
         >
             <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
@@ -60,7 +67,7 @@ const PreLoader = () => {
                 <motion.div
                     initial={{ width: "0%" }}
                     animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.1 }}
+                    transition={{ duration: 0.05 }} // Faster progress animation
                     style={{
                         position: "absolute",
                         height: "100%",
@@ -76,6 +83,7 @@ const PreLoader = () => {
             >
                 {progress}%
             </Text>
+            {isCompleted && <Text>Ready!</Text>}
         </Box>
     );
 };
