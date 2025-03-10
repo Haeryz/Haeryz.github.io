@@ -1,5 +1,5 @@
 import { Flex, HStack, IconButton } from '@chakra-ui/react'
-import { MdOutlineWavingHand } from 'react-icons/md'
+import { MdPerson, MdBarChart, MdCode } from 'react-icons/md'
 import { useTheme } from '../contexts/ThemeContext'
 import { Tooltip } from './ui/tooltip'
 
@@ -34,12 +34,33 @@ const BottomNav = () => {
 
     const currentTooltipStyle = tooltipStyles[theme];
 
+    // Scroll to element function
+    const scrollToElement = (elementId: string) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            window.scrollTo({
+                top: elementId === 'top' ? 0 : element.offsetTop - 20, // Subtract some pixels for padding
+                behavior: 'smooth'
+            });
+        }
+    };
+
     const navItems = [
-        { icon: <MdOutlineWavingHand />, label: 'Wave' },
-        { icon: <MdOutlineWavingHand />, label: 'Hello' },
-        { icon: <MdOutlineWavingHand />, label: 'Hi' },
-        { icon: <MdOutlineWavingHand />, label: 'Hey' },
-        { icon: <MdOutlineWavingHand />, label: 'Welcome' }
+        { 
+            icon: <MdPerson size={20} />, 
+            label: 'Profile',
+            target: 'top'
+        },
+        { 
+            icon: <MdBarChart size={20} />, 
+            label: 'Stats',
+            target: 'stats' 
+        },
+        { 
+            icon: <MdCode size={20} />, 
+            label: 'Projects',
+            target: 'projects' 
+        },
     ];
 
     return (
@@ -49,13 +70,13 @@ const BottomNav = () => {
             bottom={4} 
             left={0} 
             right={0} 
-            zIndex={999}  // Increased z-index
+            zIndex={999}
         >
             <HStack 
                 gapX={4} 
                 justify="center"
-                bg="rgba(0, 0, 0, 0.4)"  // Increased background opacity
-                backdropFilter="blur(12px)"  // Increased blur effect
+                bg="rgba(0, 0, 0, 0.4)"
+                backdropFilter="blur(12px)"
                 px={4}
                 py={2}
                 borderRadius="full"
@@ -96,6 +117,7 @@ const BottomNav = () => {
                                 transform: 'translateY(-2px)'
                             }}
                             transition="all 0.3s ease"
+                            onClick={() => scrollToElement(item.target)}
                         >
                             {item.icon}
                         </IconButton>

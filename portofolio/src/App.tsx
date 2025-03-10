@@ -14,9 +14,13 @@ function App() {
     <ThemeProvider>
       <Box position="relative" pb={20} overflow="hidden">
         <StarryBackground />
-        <Nama />
-        <ProfileWidget />
-        <Box mt={6}>
+        <Box id="top">
+          <Nama />
+        </Box>
+        <Box id="stats">
+          <ProfileWidget />
+        </Box>
+        <Box id="projects" mt={6}>
           <Projects />
         </Box>
         <BottomNav />
